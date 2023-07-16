@@ -15,11 +15,11 @@ router.get("/", (req, res) => {
 router.post("/register", async (req, res) => {
     try {
       const{email,password,cpassword} = req.body;
-      // const emails = await user.findOne({email:email});
-      // if(emails){
-      //   console.log('Email already exist');
-      //   return;
-      // }
+      const emails = await user.findOne({email:email});
+      if(emails){
+        console.log('Email already exist');
+        return;
+      }
       if(password!==cpassword){
         console.log('Please enter valid crediancial');
         return;
